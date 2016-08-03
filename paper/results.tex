@@ -7,17 +7,17 @@
 \begin{figure}[H]
 \captionsetup{width=0.6\textwidth}
 \centering
-    \includegraphics[width=0.7\textwidth]{figure1}
+    \includegraphics[width=0.7\textwidth]{figures/figure1}
   \caption{ Differential model proportions of the population in each class over 22 days. }
   \label{fig:figure1}
 \end{figure}
 
 For the differential model, as is demonstrated in Figure \ref{fig:figure1}, the spreader and ignorant populations become negligible by the end of the 22 days, and the knowledgeable and stifler populations stabilize above 0. The ignorant population declines, as the spreader population initially grows, and then declines as the stifler population grows. In the differential model, essentially all individuals learn about the rumor. Varying the parameters impacts how quickly the population hears of the rumor, but not the ignorant and spreader populations.
-	
+
 \begin{figure}[H]
 \captionsetup{width=0.8\textwidth}
 \centering
-    \includegraphics[width=0.7\textwidth]{figure2}
+    \includegraphics[width=0.7\textwidth]{figures/figure2}
   \caption{ Results of the sensitivity analysis of parameter $ \alpha_1 $ in the differential model. For each value of $ \alpha_1 $ the time at which 75\% of the population had been exposed to the rumor is recorded. }
   \label{fig:figure2}
 \end{figure}
@@ -25,7 +25,7 @@ For the differential model, as is demonstrated in Figure \ref{fig:figure1}, the 
 \begin{figure}[H]
 \captionsetup{width=0.8\textwidth}
 \centering
-    \includegraphics[width=0.7\textwidth]{figure3}
+    \includegraphics[width=0.7\textwidth]{figures/figure3}
   \caption{ Sensitivity analysis of parameter $ c $ in the differential model. For each credibility value the time at which 50\% of the population heard the rumor }
   \label{fig:figure3}
 \end{figure}
@@ -33,32 +33,32 @@ For the differential model, as is demonstrated in Figure \ref{fig:figure1}, the 
 \begin{figure}[H]
 \captionsetup{width=0.8\textwidth}
 \centering
-    \includegraphics[width=0.7\textwidth]{figure4}
+    \includegraphics[width=0.7\textwidth]{figures/figure4}
   \caption{Results of the sensitivity analysis of parameter $ d $ (average days to forget) in the differential model. The hour that 50\% of the population heard the rumor is recorded for each value of $ d $.}
   \label{fig:figure4}
 \end{figure}
-	
+
 Looking at Figures \ref{fig:figure2}, \ref{fig:figure3}, and \ref{fig:figure4}, increases in credibility decrease the amount of time until the rumor spreads to the majority of the population. The increase in average days to forget increases the time by which half of the population has been exposed to the rumor. The sensitivity analysis indicated that the time to reach the steady state depends most heavily on the $\alpha$ values. As $ \alpha $ increases, the time at which 75 percent of the population hear the rumor increases. When varying parameters, the $ \alpha_2 $ value was a constant double of the $ \alpha_1 $ value.
 
 \begin{figure}[H]
 \captionsetup{width=0.8\textwidth}
 \centering
-    \includegraphics[width=0.7\textwidth]{figure5}
+    \includegraphics[width=0.7\textwidth]{figures/figure5}
   \caption{ Results of the agent-based model. Solid line indicates median proportion of population across the 400 trials; shadow indicates IQR. }
   \label{fig:figure5}
 \end{figure}
- 
+
 By comparison, in the agent-based model (Figure \ref{fig:figure5}) there are some individuals who do not hear the rumor at all by the end of the simulation.
 
 \begin{figure}[H]
 \captionsetup{width=0.8\textwidth}
 \centering
-    \includegraphics[width=0.7\textwidth]{figure6}
+    \includegraphics[width=0.7\textwidth]{figures/figure6}
   \caption{ Box-and-whisker plot comparing the steady states in Figure 1 (differential model) and the end states in Figure 5 (Agent-based model). }
   \label{fig:figure6}
 \end{figure}
 
-In the agent-based model, as expected in a stochastic model, there are pockets of ``ignorance'' that remain. Additionally, the slope of the population graphs are more gradual, rather than moving sharply, as in the differential model. While the dynamics of how the differential model and the agent-based model reached their steady-states is  different, the end states are generally similar, as seen in Figure \ref{fig:figure6}. This shows a direct comparison of the steady states from the differential model shown in Figure \ref{fig:figure1} and the stochastic end states from the Agent-Based model in Figure \ref{fig:figure5}  Though the differential model has no network, and is deterministic, we find that the Agent-Based model ends with essentially the same steady states. Both models seem to confirm that with the baseline $\alpha$ values we chose, most people end up as rumor stiflers and, most people will be exposed to the rumor. Very few people end up forgetting the rumor entirely. 
+In the agent-based model, as expected in a stochastic model, there are pockets of ``ignorance'' that remain. Additionally, the slope of the population graphs are more gradual, rather than moving sharply, as in the differential model. While the dynamics of how the differential model and the agent-based model reached their steady-states is  different, the end states are generally similar, as seen in Figure \ref{fig:figure6}. This shows a direct comparison of the steady states from the differential model shown in Figure \ref{fig:figure1} and the stochastic end states from the Agent-Based model in Figure \ref{fig:figure5}  Though the differential model has no network, and is deterministic, we find that the Agent-Based model ends with essentially the same steady states. Both models seem to confirm that with the baseline $\alpha$ values we chose, most people end up as rumor stiflers and, most people will be exposed to the rumor. Very few people end up forgetting the rumor entirely.
 
 \subsection{Agent-Based Model with Feature Vectors}
 \label{subsec:featvect}
@@ -66,7 +66,7 @@ In the agent-based model, as expected in a stochastic model, there are pockets o
 \begin{figure}[H]
 \captionsetup{width=0.8\textwidth}
 \centering
-    \includegraphics[width=0.7\textwidth]{figure7}
+    \includegraphics[width=0.7\textwidth]{figures/figure7}
   \caption{ Results of the most and least similar feature vectors to the population in the agent-based model (average across $ 300 $ trials). }
   \label{fig:figure7}
 \end{figure}
@@ -74,7 +74,7 @@ In the agent-based model, as expected in a stochastic model, there are pockets o
 \begin{figure}[H]
 \captionsetup{width=0.8\textwidth}
 \centering
-    \includegraphics[width=0.7\textwidth]{figure8}
+    \includegraphics[width=0.7\textwidth]{figures/figure8}
   \caption{ Density of the proportion of the population who heard the rumor after $ 22 $ days with the most and least similar rumors ($ 300 $ trials). }
   \label{fig:figure8}
 \end{figure}
@@ -82,7 +82,7 @@ In the agent-based model, as expected in a stochastic model, there are pockets o
 \begin{figure}[H]
 \captionsetup{width=0.8\textwidth}
 \centering
-    \includegraphics[width=0.7\textwidth]{figure9}
+    \includegraphics[width=0.7\textwidth]{figures/figure9}
   \caption{ Linear model of the relationship between the final percentage of the population heard rumor and average similarity score of the feature vector ($ r~=~0.538 $). Shading designates the 95\% confidence interval. }
   \label{fig:figure9}
 \end{figure}
