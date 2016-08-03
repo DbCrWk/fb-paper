@@ -1,0 +1,78 @@
+% BG-main.tex   
+% Aug. 2014 
+% Sept.-2014 
+
+\documentclass[fleqn,letterpaper,11pt]{article}
+
+\usepackage[pass]{geometry}
+\usepackage{vmargin}
+\usepackage{fancyhdr,todo}
+\usepackage{amsmath}
+\usepackage{amsfonts,amssymb,amsthm,cite,float,graphicx}
+\usepackage[tight,footnotesize]{subfigure}
+\usepackage[usenames]{color}
+\usepackage{algorithm,algorithmic}
+\usepackage[numbers, square, super]{natbib}    % this package seems sensitive to location placement
+\usepackage{authblk}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{csquotes}
+\usepackage{microtype}
+\LoadMicrotypeFile{cmr}
+\SetProtrusion 
+{encoding=OT1,family=cmr}
+{\textquotedblleft = {1000, },\textquotedblright = { ,1000}}
+
+\setcounter{page}{1}
+\setlength{\headheight}{15.2pt}
+\setlength{\textwidth}{6.75 in}
+\pagestyle{fancy}
+\setmarginsrb{2.2cm}{2.2cm}{1.6cm}{1.60cm}{26pt}{5mm}{10 mm}{7mm}
+\setcounter{secnumdepth}{4}
+
+
+\lhead{ Rumors with Personality }
+\rhead{Devavrat V. Dabke and Eva E. Arroyo}
+
+\include{macros}
+
+\newcommand\Mark[1]{\textsuperscript#1}
+\newcommand{\harpoon}{\overset{\rightharpoonup}}
+\newcommand{\norm}[1]{\lvert\lvert #1 \rvert\rvert}
+
+\renewcommand{\vec}[1]{\harpoon{\mathbf{#1}}}
+
+\renewcommand*{\bibfont}{\interlinepenalty 10000\relax}
+
+\newcommand{\NA}{---}
+
+\newcommand{\specialcell}[2][c]{%
+  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
+
+% =====================================================
+
+\begin{document}
+
+\input{draft1-title}
+
+\input{draft1-introduction}
+
+\input{draft1-differential}
+
+\input{draft1-ab}
+
+\input{draft1-results}
+
+\input{draft1-discussion}
+
+% ...  bibliography 
+
+\setlength{\bibsep}{2pt}    % need right package 
+
+\bibliographystyle{abbrvnat}
+\bibliography{draft1_references}
+
+\end{document}

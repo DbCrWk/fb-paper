@@ -1,0 +1,60 @@
+\section{Agent-Based Models }
+\label{sec:abmodel}
+
+%\subsection{Modeling Applications}
+%\label{subsec:abmodelapp}
+
+%We compared our results from the agent-based model to the differential models and analyzed how the credibility, memorability, and novelty affected the steady states (or final distributions) of the populations. Additionally, we compared it to a realistic network to examine if this alters the spread of the rumor. Finally, we incorporated demographic and characteristic information about the network and the rumor (a feature vector).
+
+\subsection{Simple Model Method}
+\label{subsec:abmodelsetup}
+
+\noindent We discretized the data we used for the Facebook differential model, in essence using our parameterized proportions as probabilities. Using data from the Facebook network, we allowed individuals to communicate only with those to whom they are connected. To simulate the model, we used $ 400 $ distinct trials, where each trial constituted $ 22 $ days.
+
+Each person began as ignorant, except for a randomly selected subset of the population, who became spreaders. The chance of becoming a spreader was set at $ 5\% $ distributed randomly (i.e. without considering the network). Because it is a large population ($ 4\,039 $ individuals), each trial would have had around $ 202 $ spreaders, but the actual number of spreaders varies from trial to trial. Additionally,  it was possible for all of the spreaders to be concentrated in a subnetwork or a ``pocket of friends."
+
+To begin each day, every user was assigned an amount of time logged in by picking randomly from a normal distribution with a mean of $ 23 $ minutes and a standard deviation of $ 4 $ minutes, bounded above $ 0 $. We made the assumption that the majority of people will probably be logged on during an $8$ hour period of the day; therefore, we only modeled $480$ minutes per day, within which the users select their logon time (n.b. users also could not log on in the last $ 23 $ minutes of the day, as $ 23 $ minutes a day was set as the mean browsing time). Each user had a probability of $14/365$ to ``post" in a given day. Then, based on the time that they are ``logged on," users were assigned a ``time" which they made their post form a uniform random distribution. This occurred on each of the $ 22 $ days that constituted a trial.
+
+\begin{table}[ht]
+\begin{center}
+%\begin{tabular}{l c | l | p{6cm} | p{6cm} | l |}
+%	&\multicolumn{5}{c}{\textbf{Poster State}}\\ \cline{3-6}
+%	 \multicolumn{1}{c}{} &&I&S&T&K\\ \cline{2-6}
+%	 \multicolumn{1}{c|}{\multirow{4}{*}{\rotatebox[origin=c]{90}{\textbf{Reader State}}}}& \multicolumn{1}{c|}{I} & N/A & becomes S with prob. of $ c = 0.8 $ or T with prob. of $ (1-c) = 0.2 $ & N/A & N/A  \\[1ex] \cline{2-6}
+%	\multicolumn{1}{c|}{} & \multicolumn{1}{c|}{S} & N/A & becomes T with prob. of $ \alpha_1 = 0.01 $ & becomes T with prob. of $ \alpha_2 = 0.02 $ & N/A \\[1ex] \cline{2-6}
+%	\multicolumn{1}{c|}{} & \multicolumn{1}{c|}{T} & N/A & N/A & N/A & N/A\\[1ex] \cline{2-6}
+%	\multicolumn{1}{c|}{} & \multicolumn{1}{c|}{K} & N/A & becomes T with prob. of $ \alpha_1 = 0.01 $ & N/A & N/A \\ [1ex] \cline{2-6}
+
+\bgroup
+\def\arraystretch{1.5}
+\begin{tabular}{l c l l l l}
+&\multicolumn{5}{c}{\textbf{Poster State}}\\ \cline{2-6}
+\multicolumn{1}{c|}{}&&I&S&T&K \\ \cline{3-6}
+ \multicolumn{1}{c|}{\multirow{5}{*}{\rotatebox[origin=c]{90}{\textbf{Reader State}}}} &
+\multicolumn{1}{c|}{I} & \NA & $\begin{aligned}[t] \mathbb{P}(S) &= c = 0.8 \\ \mathbb{P}(T) &= 1-c = 0.2 \end{aligned}$ & \NA & \NA  \\ \cline{3-6}
+\multicolumn{1}{c|}{} & \multicolumn{1}{c|}{S} & \NA & $ \mathbb{P}(T) = \alpha_1 = 0.01 $ & $ \mathbb{P}(T) = \alpha_2 = 0.02 $ & \NA \\ \cline{3-6}
+\multicolumn{1}{c|}{} & \multicolumn{1}{c|}{T} & \NA & \NA & \NA & \NA \\ \cline{3-6}
+\multicolumn{1}{c|}{} & \multicolumn{1}{c|}{K} & \NA & $ \mathbb{P}(T) = \alpha_1 = 0.01 $ & \NA & \NA \\
+\end{tabular}
+\egroup
+
+\end{center}
+\captionsetup{width=0.8\textwidth}
+\caption{Next reader state for possible interactions between reader and poster. $\mathbb{P}(X)$ denotes probability that reader changes to class $X$}
+\label{table:absimpleparams}
+\end{table}
+
+
+Each ``day," after determining the logon time, posting order, and post time, the simulation of rumor spread began. Every minute, each user could ``view" posts written at that minute from people to whom they were \textbf{directly} connected. Users were also capped at reading $ 10 $ posts a minute. If a poster was a spreader, they had chance $ \delta = \frac{1}{d} = \frac{1}{22*480} $ of forgetting the rumor. Then, based off of the probabilities in Table \ref{table:absimpleparams}, the state of each person was immediately recalculated. Therefore, if a person changed state at a particular minute within a day, then that person would interact as that state with other users in every minute after that. Finally, after $ 22 $ days, the trial ended.
+
+\subsection{Feature Vector Model Method}
+\label{subsec:fvmodelsetup}
+
+This model followed a similar logic as the preceding agent-based model. However, the different interactions accounted for the similarity between two agents or the similarity between an agent and the rumor. First, a baseline feature space of dimension $ D = 195 $ was taken as a subsample from the Facebook dataset \cite{mcauley-2014}. Each feature corresponds to some data from the original Facebook profiles, like language, identified gender, etc. It should be noted that the identity of the individual features are not important, we are simply finding a metric for personality similarity, and then examining how assuming personality similarity influences credibility of rumors impacts rumor spread in a population. Each feature is boolean, taking either ``true," ``false," or ``N/A" if the value is unknown. Any ``N/As" for a given feature were filled in randomly with some probability $ p $, where $ p = \frac{x_{t}}{x_{f} + x_{t}} $, $ x_{t} $ is the number of \textit{true} values there were for a particular feature across the population, and $ x_{f} $ is the corresponding number of \textit{false} values. The rumor itself was also initialized with a particular feature vector, each term generated randomly. A ``most similar" rumor vector was generated, which was created by rounding every $ p $ to 0 or 1 for each feature. The ``most dissimilar" rumor vector was the logical complement of the ``most similar" rumor vector. 
+
+Next, pairwise angular similarity $ S_{p,r} $ was taken between the two interacting agents, poster and reader, where 
+$$ S_{p,r} = cos(\theta) = \frac{\vec{v_r}\cdot\vec{v_p}}{\norm{\vec{v_r}} \norm{\vec{v_p}}} $$ where the poster has feature vector $ \vec{v_p} $ and the reader has feature vector $ \vec{v_r} $. Angular similarity between the feature and the reader was also determined, where $$ F_r  = cos(\theta) = \frac{\vec{v_r}\cdot\vec{f}}{\norm{\vec{v_r}} \norm{\vec{f}}} $$ $ \vec{f} $ is the feature vector of the particular rumor.
+
+We also determined a ``baseline" $ b = 0.5 $, which is the ``influence" of an original parameter, and where $ 1 - b = 0.5 $ represents the influence of the interaction of feature vectors. This baseline determined how much each parameter was affected by the similarity scores of feature vectors, and guaranteed the values would be at least half of the original model values. The simple agent-based model was run again, with $ b*c + (1-(b*c))*F_k $ substituted for $ c $ and $ b*\alpha + (1-(b*\alpha))*S_{p,r} $ substituted for the respective $ \alpha $ values and agents $ i $ and $ j $.
+
+We tested $ 86 $ different feature vectors, with $ 100 $ trials each. In addition for our simulated ``most similar" rumor and the ``most dissimilar" rumor  we ran $ 300 $ repetitions with each rumor, of the stochastic agent based model, with the same population.
