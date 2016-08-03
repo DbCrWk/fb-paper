@@ -9,12 +9,12 @@ Using data from the Facebook network, we allowed individuals to communicate only
 To simulate the model, we used $ 400 $ distinct trials, where each trial constituted $ 22 $ days.
 
 Each person began as ignorant, except for a randomly selected subset of the population, who became spreaders.
-The chance of becoming a spreader was set at $ 5\% $ distributed randomly (i.e. without considering the network).
+The chance of becoming a spreader was set at $ 5\% $ distributed randomly (i.e.\ without considering the network).
 Because it is a large population ($ 4\,039 $ individuals), each trial would have had around $ 202 $ spreaders, but the actual number of spreaders varies from trial to trial.
 Additionally,  it was possible for all of the spreaders to be concentrated in a subnetwork or a ``pocket of friends.''
 
 To begin each day, every user was assigned an amount of time logged in by picking randomly from a normal distribution with a mean of $ 23 $ minutes and a standard deviation of $ 4 $ minutes, bounded above $ 0 $.
-We made the assumption that the majority of people will probably be logged on during an $8$ hour period of the day; therefore, we only modeled $480$ minutes per day, within which the users select their logon time (n.b. users also could not log on in the last $ 23 $ minutes of the day, as $ 23 $ minutes a day was set as the mean browsing time).
+We made the assumption that the majority of people will probably be logged on during an $8$ hour period of the day; therefore, we only modeled $480$ minutes per day, within which the users select their logon time (n.b.\ users also could not log on in the last $ 23 $ minutes of the day, as $ 23 $ minutes a day was set as the mean browsing time).
 Each user had a probability of $14/365$ to ``post'' in a given day.
 Then, based on the time that they are ``logged on,'' users were assigned a ``time'' which they made their post form a uniform random distribution.
 This occurred on each of the $ 22 $ days that constituted a trial.
@@ -47,7 +47,7 @@ Each ``day,'' after determining the logon time, posting order, and post time, th
 Every minute, each user could ``view'' posts written at that minute from people to whom they were \textbf{directly} connected.
 Users were also capped at reading $ 10 $ posts a minute.
 If a poster was a spreader, they had chance $ \delta = \frac{1}{d} = \frac{1}{22*480} $ of forgetting the rumor.
-Then, based off of the probabilities in Table \ref{table:absimpleparams}, the state of each person was immediately recalculated.
+Then, based off of the probabilities in Table~\ref{table:absimpleparams}, the state of each person was immediately recalculated.
 Therefore, if a person changed state at a particular minute within a day, then that person would interact as that state with other users in every minute after that.
 Finally, after $ 22 $ days, the trial ended.
 
@@ -56,7 +56,7 @@ Finally, after $ 22 $ days, the trial ended.
 
 This model followed a similar logic as the preceding agent-based model.
 However, the different interactions accounted for the similarity between two agents or the similarity between an agent and the rumor.
-First, a baseline feature space of dimension $ D = 195 $ was taken as a subsample from the Facebook dataset \cite{mcauley-2014}.
+First, a baseline feature space of dimension $ D = 195 $ was taken as a subsample from the Facebook dataset~\cite{mcauley-2014}.
 Each feature corresponds to some data from the original Facebook profiles, like language, identified gender, etc.
 It should be noted that the identity of the individual features are not important, we are simply finding a metric for personality similarity, and then examining how assuming personality similarity influences credibility of rumors impacts rumor spread in a population.
 Each feature is boolean, taking either ``true,'' ``false,'' or ``N/A'' if the value is unknown.
@@ -66,8 +66,8 @@ A ``most similar'' rumor vector was generated, which was created by rounding eve
 The ``most dissimilar'' rumor vector was the logical complement of the ``most similar'' rumor vector.
 
 Next, pairwise angular similarity $ S_{p,r} $ was taken between the two interacting agents, poster and reader, where
-$$ S_{p,r} = cos(\theta) = \frac{\vec{v_r}\cdot\vec{v_p}}{\norm{\vec{v_r}} \norm{\vec{v_p}}} $$ where the poster has feature vector $ \vec{v_p} $ and the reader has feature vector $ \vec{v_r} $.
-Angular similarity between the feature and the reader was also determined, where $$ F_r  = cos(\theta) = \frac{\vec{v_r}\cdot\vec{f}}{\norm{\vec{v_r}} \norm{\vec{f}}} $$ $ \vec{f} $ is the feature vector of the particular rumor.
+$$ S_{p,r} = \cos(\theta) = \frac{\vec{v_r}\cdot\vec{v_p}}{\norm{\vec{v_r}} \norm{\vec{v_p}}} $$ where the poster has feature vector $ \vec{v_p} $ and the reader has feature vector $ \vec{v_r} $.
+Angular similarity between the feature and the reader was also determined, where $$ F_r  = \cos(\theta) = \frac{\vec{v_r}\cdot\vec{f}}{\norm{\vec{v_r}} \norm{\vec{f}}} $$ $ \vec{f} $ is the feature vector of the particular rumor.
 
 We also determined a ``baseline'' $ b = 0.5 $, which is the ``influence'' of an original parameter, and where $ 1 - b = 0.5 $ represents the influence of the interaction of feature vectors.
 This baseline determined how much each parameter was affected by the similarity scores of feature vectors, and guaranteed the values would be at least half of the original model values.
