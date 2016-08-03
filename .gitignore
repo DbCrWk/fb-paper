@@ -20,7 +20,7 @@
 # *.pdf
 
 ## Generated PDF file
-draft1-main.pdf
+main.pdf
 
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
