@@ -23,7 +23,7 @@ picking randomly from a normal distribution with a mean of $ 23 $ minutes and a
 standard deviation of $ 4 $ minutes, bounded above $ 0 $. We made the assumption
 that the majority of people will probably be logged on during an $8$ hour period
 of the day; therefore, we only modeled $480$ minutes per day, within which the
-users select their logon time (n.b. users also could not log on in the last $ 23 $
+users select their logon time (n.b.\ users also could not log on in the last $ 23 $
 minutes of the day, as $ 23 $ minutes a day was set as the mean browsing time).
 Each user had a probability of $14/365$ to ``post'' in a given day. Then, based
 on the time that they are ``logged on,'' users were assigned a ``time'' which they
@@ -39,7 +39,7 @@ made their post form a uniform random distribution. This occurred on each of the
 &\multicolumn{5}{c}{\textbf{Poster State}}\\ \cline{2-6}
 \multicolumn{1}{c|}{}&&I&S&T&K \\ \cline{3-6}
  \multicolumn{1}{c|}{\multirow{5}{*}{\rotatebox[origin=c]{90}{\textbf{Reader State}}}} &
-\multicolumn{1}{c|}{I} & \NA & $\begin{aligned}[t] \mathbb{P}(S) &= c = 0.8 \\ \mathbb{P}(T) &= 1-c = 0.2 \end{aligned}$ & \NA & \NA  \\ \cline{3-6}
+\multicolumn{1}{c|}{I} & \NA & $\begin{aligned}[t] \mathbb{P}(S) &= c = 0.8 \\ \mathbb{P}(T) &= 1-c = 0.2 \end{aligned}$ & \NA & \NA \\ \cline{3-6}
 \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{S} & \NA & $ \mathbb{P}(T) = \alpha_1 = 0.01 $ & $ \mathbb{P}(T) = \alpha_2 = 0.02 $ & \NA \\ \cline{3-6}
 \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{T} & \NA & \NA & \NA & \NA \\ \cline{3-6}
 \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{K} & \NA & $ \mathbb{P}(T) = \alpha_1 = 0.01 $ & \NA & \NA \\
@@ -88,11 +88,11 @@ The ``most dissimilar'' rumor vector was the logical complement of the ``most
 similar'' rumor vector.
 
 Next, pairwise angular similarity $ S_{p,r} $ was taken between the two
-interacting agents, poster and reader, where $$ S_{p,r} = cos(\theta) =
+interacting agents, poster and reader, where $$ S_{p,r} = \cos(\theta) =
 \frac{\vec{v_r}\cdot\vec{v_p}}{\norm{\vec{v_r}} \norm{\vec{v_p}}} $$ where the
 poster has feature vector $ \vec{v_p} $ and the reader has feature vector $
 \vec{v_r} $. Angular similarity between the feature and the reader was also
-determined, where $$ F_r  = cos(\theta) =
+determined, where $$ F_r  = \cos(\theta) =
 \frac{\vec{v_r}\cdot\vec{f}}{\norm{\vec{v_r}} \norm{\vec{f}}} $$ $ \vec{f} $ is
 the feature vector of the particular rumor.
 
