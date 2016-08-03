@@ -1,0 +1,52 @@
+\documentclass{letter}
+\usepackage{hyperref}
+% Palatino for rm and math | Helvetica for ss | Courier for tt
+\usepackage{mathpazo} % math & rm
+\linespread{1.05}        % Palatino needs more leading (space between lines)
+\usepackage[scaled]{helvet} % ss
+\usepackage{courier} % tt
+\normalfont
+\usepackage[T1]{fontenc}
+
+\usepackage[a4paper,left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry}
+
+\makeatletter
+\renewcommand{\closing}[1]{\par\nobreak\vspace{\parskip}%
+  \stopbreaks
+  \noindent
+  \ifx\@empty\fromaddress\else
+  \hspace*{\longindentation}\fi
+  \parbox{\indentedwidth}{\raggedright
+       \ignorespaces #1\\[2\medskipamount]%
+       \ifx\@empty\fromsig
+           \fromname
+       \else \fromsig \fi\strut}%
+   \par}
+\makeatother
+
+\signature{Eva E. Arroyo \qquad Devavrat V. Dabke}
+\address{Duke University \\
+Campus Box 97110 \\
+Durham, NC 27708}
+
+\longindentation=0pt
+
+\begin{document}
+
+\begin{letter}{Dr. Luis Melara\\
+Editor-in-Chief\\
+SIAM Undergraduate Research Online\\}
+\opening{To Dr. Melara:}
+
+We are herewith submitting our paper entitled ``Rumors with Personality: A Differential and Agent-Based Model of Information Spread through Networks'' for consideration for publication in \textit{SIAM Undergraduate Research Online.} We are two undergraduate students attending Duke University, and were mentored on this project by Prof. Anita Layton, who is a professor in the Departments of Mathematics and Biomedical Engineering.
+
+In this manuscript, we model rumor spread with both differential and agent-based models. The first part of our investigation assumes homogenous populations; when we introduce a network (i.e. only allowing spread of information through ``connected'' people), we found an appreciable change in the dynamics of the spread, but both ultimately yielded similar end states. We also include a sensitivity analysis for our differential model. The second part of our investigation incorporates the impact of features: self-recognized groups an individual belongs to, such as education level, age, and gender. These factors fundamentally alter the dynamics of rumor spread, as well as their terminal states.
+
+We believe that this submission is appropriate for \textit{SIAM Undergraduate Research Online} as it is a mathematical model completed by undergraduates that considers the realistic social dynamics that dictate rumor spread. This paper has not been presented in any form at a conference.
+
+We greatly appreciate your consideration of our submission
+\vspace{24pt}
+\closing{Sincerely,}
+
+\end{letter}
+\end{document}
