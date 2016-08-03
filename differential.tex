@@ -1,0 +1,14 @@
+\section{Differential Model }
+\label{sec:diffmodel}
+
+\subsection{Modeling Applications}
+\label{subsec:diffmodeapp}
+
+Initially, we ran the differential model in order to compare a continuous model to a stochastic agent-based model. We examined how parameters based on face-to-face interaction had an impact on rumor spread versus interaction over a network (described by an adjacency matrix). Specifically, we used parameters for a model on consumer goods, in order to examine how long it took the rumor to reach a significant proportion (90\%) of the population and the effect on the amount of time until steady states were reached with perturbations in initial parameters.
+
+\subsection{Estimating Parameters}
+\label{subsec:diffmodeeparam}
+
+The parameters necessary to estimate were \textit{credibility}, the
+\textit{loss of novelty}, and the \textit{number of \textbf{close} interactions} for an individual. Using consumer statistics on perceptions of reliability of information from different sources, we initially estimated the credibility $ c = 2.8/7 $ \cite{kamins-1997}. Estimations in number of close contacts varied from $ 12 $--$ 26 $ people per day, varying based on age \cite{cahill-1996, mossong-2008, edmunds-2006}. We took the average number of close contacts to be $ 22 $ (i.e. $ \tau = 22 $, which determines our parameter of interaction $ l $). Although the differential model itself does not change with the medium of Facebook, the meaning of $ \tau $ changes. Instead of $ 22 $ close interactions per day, we selected an appropriate analog, in that we assumed the average individual reads approximately $ 22 $ posts per day. We estimated the value representing loss of novelty at $ \alpha_1 = .01 $, and  $ \alpha_2 = .02 $, since the spreaders will have a stronger effect on the stiflers.
+In all cases, these were the ``baseline" parameters, and were only modified for the Feature vector model, in which case parameters $ c $ and $ \alpha_1 $  were based on the features vectors of agents, and rumors. Sensitivity analyses for $ c $, and $ \delta $ were run on the interquartile ranges of the studies on which they were based. $ \alpha_1 $ was an approximated variable, so we simply run as small of an $ \alpha_1 $ variable that the differential model was capable of processing, up to an $ \alpha_1 $ value of .25.
