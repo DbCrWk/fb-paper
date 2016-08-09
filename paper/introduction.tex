@@ -47,13 +47,19 @@ The characteristics of the rumor itself contribute to how the rumor is spread be
 \noindent $ I $, $ S $, $ T $, and $ K $, represent the total Ignorant, Spreader, Stifler, and Knowledgeable populations respectively.
 We also designate $ N $ to represent the total size of the population, in that $ N = I + S + T + K $ (n.b.\ we assume no one dies or is born, so N stays constant, i.e. $\frac{dN}{dt} = 0$).
 
-$ c $ represents the ``credibility'' of the rumor, expressed as a probability that the Ignorant believes the Spreader.
-Therefore $ (1 - c) $\, the compliment of $ c $ is equivalent to being incredulous of the rumor.
-$ l $ represents the chance per day of interaction; it is the complement of the overall probability that an individual does not talk with a single Spreader.
+There are sevearl common parameters to all four differential equations, as follows:
+
+We represent the ``credibility'' of the rumor, expressed as a probability that the Ignorant believes the Spreader, as $ c $.
+Therefore $ (1 - c) $\, the complement of $ c $ is equivalent to being incredulous of the rumor.
+
+To represent the chance per day of interaction, $ l $, we take the complement of the overall probability that an individual does not talk with a single Spreader.
 It is computed by a set of Bernoulli trials with success probability $ \rho $ where $ \rho = 1 - \frac{S}{N} $ and number of trials to be $ \tau $ (i.e.~$ l = 1 - \rho^\tau $).
+
 $ d $ represents the number of days after which a population spontaneously forgets a rumor.
 $\alpha_1$ that describes the loss of novelty of the rumor.
 $ \alpha_2 $ describes the chance that the Spreader becomes a Stifler upon interacting with a Stifler.
+
+The equations for each population follow:
 
 \begin{equation}
 \label{eqn:istk_exp_i}
