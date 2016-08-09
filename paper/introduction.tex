@@ -69,8 +69,7 @@ The equations for each population follow:
 In Equation~\ref{eqn:istk_exp_i}, the first term describes the interaction between an Ignorant and a Spreader.
 It is dependent on both the size of the Ignorant and Spreader classes, and is proportional to parameters $ c $ and $ l $.
  The second term of Equation~\ref{eqn:istk_exp_i} accounts for the complement of ``believing the rumor'' (being ``incredulous'' of the rumor) and is proportionate to $ (1 - c) $.
-Both terms remove some of the population from the Ignorant class and lead to the Spreader class and Stifler class respectively.
-This equation does simplify into $ clSI $ \, however we keep it in the current form in order to make the transitions to different populations more easily visible in the equation.
+Both terms remove some of the population from the Ignorant class and lead to the Spreader class and Stifler class respectively. Although we can simplify this equation to ($-lSI$), we want to distinguish the credulous ($ c $) and incredulous ($ 1 - c $) group of people.
 
 \begin{equation}
 \label{eqn:istk_exp_s} \frac{dS}{dt} = clSI - \frac{1}{d} S - 2 \alpha_1l S^2 - \alpha_2 ST \\
