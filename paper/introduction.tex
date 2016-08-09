@@ -5,11 +5,11 @@
 \label{subsec:background}
 
 A rumor is defined as a ``proposition for belief of topical reference disseminated without official verification,''~\cite{knapp-1944} a notion that lends itself quite well to the imagination of applied mathematicians.
-The mathematics of rumor spread is quite well-explored, beginning with the epidemic model applied to information spread in a population by Daley and Kendall in 1965~\cite{daley-1965}.
+The mathematics of rumor spread is somewhat explored, beginning with the epidemic model applied to information spread in a population by Daley and Kendall in 1965~\cite{daley-1965}.
 This model's assumptions of homogeneous interactions and its lack of well-defined parameters likely caused ``the superficial similarity between rumors and epidemics to break down on closer scrutiny''~\cite{daley-1965}.
 Nonetheless, the similarities of knowing and spreading a rumor, and having and spreading a disease, share parallels that only deviate in some of the intricacies of their mechanism.
-In both, an ``infected'' individual in a network desires to or inadvertently spreads their ``condition.''
-With disease, one of the mechanisms of suppressing spread is vaccination, with rumors it is an individual's eventual boredom and desire for novel information.
+In both, an ``infected'' individual in a network desires to (or inadvertently spreads) their ``condition.''
+With disease, one of the mechanisms of suppressing spread is vaccination; with rumors it is an individual's eventual boredom and desire for novel information.
 
 More recent models of rumor spread in a population examined the dynamics through randomized networks~\cite{karp-2000}, examining the rumor transmission in exponentially distributed networks~\cite{moreno-2004}, and the time of rumor spread given contacts of the initial spreader in a regular network~\cite{fount-2010}.
 There is increasing emphasis on the structure of networks themselves and how this affects model dynamics~\cite{zhang-2013, pellis-2015, pellis-2012, ball-2010, zhou-2007}.
@@ -25,15 +25,15 @@ The rumor initializes in only a small fraction of the population, and spreads as
 The ``ignorant,'' ``spreader,'' and ``stifler'' populations were presented in the Daley-Kendal model~\cite{daley-1965}, but we have added a ``knowledgeable'' population, which has been postulated before as necessarily distinct from the ignorant population~\cite{zhao-2012, zhao-2011}.
 Assuming otherwise presumes that the attitude of an individual who has forgotten a rumor is identical to the behavior of an individual who had not yet heard the rumor.
 We account for this distinction with the addition of the knowledgeable population to the Daley-Kendal model.
-This model is henceforth referred to as the Ignorant, Spreader, Stifler, and Knowledgeable model, or ISTK model.
-We run three versions of this model: one differential model and two agent-based models.
-The first two ISTK models are nearly identical, except one is a differential model with no network, and the next is an agent-based model run through a fully-connected network based on Facebook data.
-The first is exactly the same as the differential model, except through a real network.
-The second agent-based model incorporates demographic data that the Facebook users in the data set designated.
-They are referred to throughout as the ``Differential model,''  ``Simple model,'' and ``Feature vector model,'' respectively.
+This model is henceforth referred to as the Ignorant, Spreader, Stifler, and Knowledgeable (ISTK) model.
+We use three variations of this model: one differential, and two agent-based.
+The differential ISTK model simulates a homogenous group of people, and has no awareness of the concept of individuals; it simply ``moves'' proportions of the group of people from one population to another over time.
+The first agent-based model, the ``Simple model,'' simulates individuals through several iterations (rounds) over time.
+The model incorporates a network that represents the connections between individuals, which in this case is based off of Facebook friends.
+The second agent-based model, the ``Feature-vetor model,'' incorporates demographic data of these Facebook users.
 
-In the ``Feature vector model,'' We use data from Facebook and initialize parameters on how rumors spread based on demographic data.
-The original social network dataset included many different types of features: education level, gender, and language.
+In the ``Feature vector model,'' we further consider 1.\ how a rumor might be targeted towards a certain demographic, and 2.\ how the ``similarity'' between a rumor and an individual affect a user's behavior.
+The original social network dataset included many different types of ``features:'' education level, gender, and language.
 Instead of assuming that every individual is equally likely to spread any rumor, we assumed that the rumor's characteristics and the demographic information of each individual affected the likelihood of the rumor to spread.
 In this way the rumor was treated by agents as if it had a personality.
 If the individual from whom they heard the rumor was more similar to them, they were more likely to believe the rumor, and if the rumor's characteristics was more similar to theirs they were more likely to spread the rumor.
