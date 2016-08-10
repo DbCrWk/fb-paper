@@ -25,19 +25,6 @@ The rumor initializes in only a small fraction of the population, and spreads as
 The ``ignorant,'' ``spreader,'' and ``stifler'' populations were presented in the Daley-Kendal model~\cite{daley-1965}, but we have added a ``knowledgeable'' population, which has been postulated before as necessarily distinct from the ignorant population~\cite{zhao-2012, zhao-2011}.
 Assuming otherwise presumes that the attitude of an individual who has forgotten a rumor is identical to the behavior of an individual who had not yet heard the rumor.
 We account for this distinction with the addition of the knowledgeable population to the Daley-Kendal model.
-<<<<<<< HEAD
-This model is henceforth referred to as the Ignorant, Spreader, Stifler, and Knowledgeable model, or ISTK model.
-We run three versions of this model: one differential model and two agent-based models.
-The first two ISTK models are nearly identical, except one is a differential model with no network, and the next is an agent-based model run through a fully-connected network based on Facebook data.
-The first is exactly the same as the differential model, except through a real network.
-The second agent-based model incorporates demographic data that the Facebook users in the data set designated.
-They are referred to throughout as the ``Differential model,''  ``Simple model,'' and ``Feature vector model,'' respectively.
-
-In the ``Feature vector model,'' We use data from Facebook and initialize parameters on how rumors spread based on demographic data.
-The original social network dataset included many different types of features: education level, gender, and language.
-An increase in the average similarity of the rumor?s feature vector to the individual's? feature vectors resulted in increased propagation through the network
-In this way the rumor was treated by agents as if it had a personality.
-=======
 This model is henceforth referred to as the Ignorant, Spreader, Stifler, and Knowledgeable (ISTK) model.
 We use three variations of this model: one differential, and two agent-based.
 The differential ISTK model simulates a homogenous group of people, and has no awareness of the concept of individuals; it simply ``moves'' proportions of the group of people from one population to another over time.
@@ -49,7 +36,6 @@ In the ``Feature vector model,'' we further consider 1.\ how a rumor might be ta
 The original social network dataset included many different types of ``features:'' education level, gender, and language.
 Instead of assuming that every individual is equally likely to spread any rumor, we assumed that the rumor's targeted characteristics and the demographic information of each individual affected the likelihood of the rumor to spread.
 In this way, we equiped the rumor with a \textit{personality}.
->>>>>>> origin/master
 If the individual from whom they heard the rumor was more similar to them, they were more likely to believe the rumor, and if the rumor's characteristics was more similar to theirs they were more likely to spread the rumor.
 There is evidence to suggest that people are more likely to believe information that comes from others with similar values\cite{gillespie-2004}.
 The similarity of the rumor to the individual influenced the individual's probability to spread the rumor, a behavior suggested by the theory of confirmation bias, which suggests that we are more likely to accept information that confirms our previous beliefs~\cite{wason-1960}.
