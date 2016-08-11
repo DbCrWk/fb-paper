@@ -10,6 +10,21 @@
 
 \usepackage[a4paper,left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry}
 
+\newcounter{section}
+\newcounter{subsection}[section]
+\setcounter{secnumdepth}{3}
+\makeatletter
+\newcommand\section{\@startsection {section}{1}{\z@}%
+                                   {-3.5ex \@plus -1ex \@minus -.2ex}%
+                                   {2.3ex \@plus.2ex}%
+                                   {\normalfont\Large\bfseries}}
+\newcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                     {1.5ex \@plus .2ex}%
+                                     {\normalfont\large\bfseries}}
+\renewcommand \thesection{\@arabic\c@section}
+\renewcommand\thesubsection{\thesection.\@arabic\c@subsection}
+
 \makeatletter
 \renewcommand{\closing}[1]{\par\nobreak\vspace{\parskip}%
   \stopbreaks
@@ -50,6 +65,12 @@ Below, we provide reference to areas we corrected for each comment we received.
 In a few cases where the recommended change was not made exactly as the reviewer suggested,\ we provide reasoning and clarification.
 We appreciate your feedback, which we feel has much improved our manuscript.
 
+\section{Response to Reviewer 1}
+\input{rev1-part1}
+\input{rev1-part2}
+
+\section{Response to Reviewer 2}
+\input{rev2-part1}
 
 We greatly appreciate your consideration of our submission
 \vspace{24pt}
