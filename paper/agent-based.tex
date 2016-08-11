@@ -7,7 +7,14 @@
 \noindent In order to incorporate a network into our model, we constructed an agent-based model (a useful stochastic technique for modeling dyanmics with graphs)~\cite{snijders-2010}.
 We discretized the data we used for the differential model, in essence using our parameterized proportions as the probabilities that certain individuals would move between populations.
 Using data from the Facebook network, we allowed individuals to communicate only with those to whom they are connected.
-To simulate the model, we used $ 400 $ distinct trials, where each trial constituted $ 22 $ days.
+Since agent-based models are based on probabilities, and are inherently non-deterministic, we essentially have to perform many ``trials'' of the model.
+Each trial consists of initializing a set of ``agents'' into one of the four populations: Ignorant, Spreader, Stifler, or Knowledgeable.
+In each trial, there are several timesteps, at which point each agent has a ``turn.''
+At each turn, an agent can interact with other agents, and move from one population to another.
+The rules the define what an agent can or cannot do on a turn are described by the ISTK model.
+For example, in the differential ISTK model, an Ignorant becomes a Spreader by the term $ clSI $.
+Translating this term to the agent-based model: $ lSI $ represents the chance that an Ignorant and Spreader interact (as characterized by the network), and $ c $ represents the credibility of the rumor, as expressed as a probability.
+We performed $ 400 $ distinct trials, where each trial constituted $ 22 $ days.
 
 Each person began as ignorant, except for a randomly selected subset of the population, who became spreaders.
 The chance of becoming a spreader was set at $ 5\% $ distributed randomly (i.e.\ without considering the network).
