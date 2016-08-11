@@ -1,0 +1,41 @@
+\subsection{Introductory Comments}
+\newcounter{rev2-intro}
+\setcounter{rev2-intro}{1}
+
+\textbf{Comment \arabic{rev2-intro}} \\
+Overall, in the current state of the paper, I do not recommend the paper for publication.
+There are two main issues:
+
+\textbf{Response \arabic{rev2-intro}} \\
+We believe that we have corrected and addressed the issues that were outlined.
+\stepcounter{rev2-intro}
+
+\textbf{Comment \arabic{rev2-intro}} \\
+It appears that this paper tries to accomplish too much.
+There seem to be 3 models, none of which are explored much in depth and not enough is said about comparisons between them.
+
+\textbf{Response \arabic{rev2-intro}} \\
+Throughout the paper we have tried to make clearer that the three models form a progression, and are based on the same model: the ITSK model.
+The differential ISTK model provides a baseline for our model by demonstrating rumor spread over a homogenous, generalized population.
+The simple, agent-based ISTK model introduces more complexity, particularly that of a network.
+With the agent-based setup, we gain more control over the model and can take into account the rumor's spread over the specific network structure provided to us by our Facebook dataset.
+Finally, we arrive at the feature-vector, agent-based ISTK model which allows us to track the ``personality'' of a rumor as it spreads through the network.
+We can take into account the demographic information over the population (again, by using our Facebook dataset), in addition to the network.
+
+The entire paper demonstrates how including a network and a ``personality'' changes the way a rumor spreads.
+Our introduction has been modified to clarify this progression and unify the three versions of the ISTK model.
+We also have standardized that names we use for these three different versions of the ISTK model throughout the paper, so as to further demonstrate their core connection.
+\stepcounter{rev2-intro}
+
+\textbf{Comment \arabic{rev2-intro}} \\
+Because of the ﬁrst issue, there is not enough detail in the models.
+For example, in the ISTK differential equation model, results are shown, however there is not sufﬁcient detail in all of the choices of parameters to reproduce the results.
+I believe this is true about all of the models.
+
+\textbf{Response \arabic{rev2-intro}} \\
+We have revised the introduction, including major revisions of Section 1.3 that includes a flow chart to better express our model.
+We made the language in Sections 2 and 3 more precise, so as to better communicate the specific workings on each model.
+Section 2.2.2 has been updated to clarify the parameter choice for the differential equation.
+Section 3.1 has been updated to clarify the parameter choice for the simple, agent-based model.
+Section 3.1 has been updated to clarify the parameter choice for the feature-vector, agent-based model.
+\stepcounter{rev2-intro}
