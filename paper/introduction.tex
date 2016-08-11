@@ -72,7 +72,7 @@ The equations for each population follow:
 
 \begin{equation}
 \label{eqn:istk_exp_i}
-\frac{dI}{dt}  = - clSI - (1-c)lSI \\
+\frac{dI}{dt} = - clSI - (1-c)lSI \\
 \end{equation}
 
 In Equation~\ref{eqn:istk_exp_i}, the first term describes the interaction between an Ignorant and a Spreader.
@@ -91,7 +91,7 @@ When these two Spreaders interact ($S^2$), we account for the chance that \textb
 The final term represents the disillusionment power of a Stifler when interacting with a Spreader.
 
 \begin{equation}
-\label{eqn:istk_exp_t} \frac{dT}{dt} =  2 \alpha_1l S^2 + \alpha_1l SK + \alpha_2 ST + (1-c)lSI \\
+\label{eqn:istk_exp_t} \frac{dT}{dt} = 2 \alpha_1l S^2 + \alpha_1l SK + \alpha_2 ST + (1-c)lSI \\
 \end{equation}
 
 In equation~\ref{eqn:istk_exp_t}, the first of which describes the removal of members from the Spreader class into the Stifler as defined above.
@@ -108,7 +108,7 @@ In our model, we do not consider the interaction between a Stifler and an Ignora
 Moreover, by a similar logic, when a Knowledgeable and Stifler interact, there is no change in populations.
 
 
-Our equation differs from the  Daley-Kendal model~\cite{daley-1965} primarily through addition of the Knowledgeable class, individuals in this category would have been in the Ignorant of Stifler classes in the original model.
+Our equation differs from the Daley-Kendal model~\cite{daley-1965} primarily through addition of the Knowledgeable class, individuals in this category would have been in the Ignorant of Stifler classes in the original model.
 In addition, the Daley-Kendal model assumes all individuals who hear a rumor will believe it.
 In our case, this is not so, through addition of the parameter $ c $.
 In the Daley-Kendal model it is possible to become ignorant after hearing the rumor, and in this case that is not possible.

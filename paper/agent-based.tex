@@ -12,7 +12,7 @@ To simulate the model, we used $ 400 $ distinct trials, where each trial constit
 Each person began as ignorant, except for a randomly selected subset of the population, who became spreaders.
 The chance of becoming a spreader was set at $ 5\% $ distributed randomly (i.e.\ without considering the network).
 Because it is a large population ($ 4\,039 $ individuals), each trial would have had around $ 202 $ spreaders, but the actual number of spreaders varies from trial to trial.
-Additionally,  it was possible for all of the spreaders to be concentrated in a subnetwork or a ``pocket of friends.''
+Additionally, it was possible for all of the spreaders to be concentrated in a subnetwork or a ``pocket of friends.''
 
 To begin each day, every user was assigned an amount of time logged in by picking randomly from a normal distribution with a mean of $ 23 $ minutes and a standard deviation of $ 4 $ minutes, bounded above $ 0 $.
 We made the assumption that the majority of people will probably be logged on during an $8$ hour period of the day; therefore, we only modeled $480$ minutes per day, within which the users select their logon time (n.b.\ users also could not log on in the last $ 23 $ minutes of the day, as $ 23 $ minutes a day was set as the mean browsing time).
@@ -29,7 +29,7 @@ This occurred on each of the $ 22 $ days that constituted a trial.
 &\multicolumn{5}{c}{\textbf{Poster State}}\\ \cline{2-6}
 \multicolumn{1}{c|}{}&&I&S&T&K \\ \cline{3-6}
  \multicolumn{1}{c|}{\multirow{5}{*}{\rotatebox[origin=c]{90}{\textbf{Reader State}}}} &
-\multicolumn{1}{c|}{I} & \NA & $\begin{aligned}[t] \mathbb{P}(S) &= c = 0.8 \\ \mathbb{P}(T) &= 1-c = 0.2 \end{aligned}$ & \NA & \NA  \\ \cline{3-6}
+\multicolumn{1}{c|}{I} & \NA & $\begin{aligned}[t] \mathbb{P}(S) &= c = 0.8 \\ \mathbb{P}(T) &= 1-c = 0.2 \end{aligned}$ & \NA & \NA \\ \cline{3-6}
 \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{S} & \NA & $ \mathbb{P}(T) = \alpha_1 = 0.01 $ & $ \mathbb{P}(T) = \alpha_2 = 0.02 $ & \NA \\ \cline{3-6}
 \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{T} & \NA & \NA & \NA & \NA \\ \cline{3-6}
 \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{K} & \NA & $ \mathbb{P}(T) = \alpha_1 = 0.01 $ & \NA & \NA \\
@@ -68,11 +68,11 @@ The ``most dissimilar'' rumor vector was the logical complement of the ``most si
 
 Next, pairwise angular similarity $ S_{p,r} $ was taken between the two interacting agents, poster and reader, where
 $$ S_{p,r} = \cos(\theta) = \frac{\vec{v_r}\cdot\vec{v_p}}{\norm{\vec{v_r}} \norm{\vec{v_p}}} $$ where the poster has feature vector $ \vec{v_p} $ and the reader has feature vector $ \vec{v_r} $.
-Angular similarity between the feature and the reader was also determined, where $$ F_r  = \cos(\theta) = \frac{\vec{v_r}\cdot\vec{f}}{\norm{\vec{v_r}} \norm{\vec{f}}} $$ $ \vec{f} $ is the feature vector of the particular rumor.
+Angular similarity between the feature and the reader was also determined, where $$ F_r = \cos(\theta) = \frac{\vec{v_r}\cdot\vec{f}}{\norm{\vec{v_r}} \norm{\vec{f}}} $$ $ \vec{f} $ is the feature vector of the particular rumor.
 
 We also determined a ``baseline'' $ b = 0.5 $, which is the ``influence'' of an original parameter, and where $ 1 - b = 0.5 $ represents the influence of the interaction of feature vectors.
 This baseline determined how much each parameter was affected by the similarity scores of feature vectors, and guaranteed the values would be at least half of the original model values.
 The simple agent-based model was run again, with $ b*c + (1-(b*c))*F_k $ substituted for $ c $ and $ b*\alpha + (1-(b*\alpha))*S_{p,r} $ substituted for the respective $ \alpha $ values and agents $ i $ and $ j $.
 
 We tested $ 86 $ different feature vectors, with $ 100 $ trials each.
-In addition for our simulated ``most similar'' rumor and the ``most dissimilar'' rumor  we ran $ 300 $ repetitions with each rumor, of the stochastic agent based model, with the same population.
+In addition for our simulated ``most similar'' rumor and the ``most dissimilar'' rumor, we ran $ 300 $ repetitions with each rumor, of the stochastic agent based model, with the same population.
