@@ -1,0 +1,59 @@
+\documentclass{letter}
+\usepackage{hyperref}
+% Palatino for rm and math | Helvetica for ss | Courier for tt
+\usepackage{mathpazo} % math & rm
+\linespread{1.05}        % Palatino needs more leading (space between lines)
+\usepackage[scaled]{helvet} % ss
+\usepackage{courier} % tt
+\normalfont
+\usepackage[T1]{fontenc}
+
+\usepackage[a4paper,left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry}
+
+\makeatletter
+\renewcommand{\closing}[1]{\par\nobreak\vspace{\parskip}%
+  \stopbreaks
+  \noindent
+  \ifx\@empty\fromaddress\else
+  \hspace*{\longindentation}\fi
+  \parbox{\indentedwidth}{\raggedright
+       \ignorespaces #1\\[2\medskipamount]%
+       \ifx\@empty\fromsig
+           \fromname
+       \else \fromsig \fi\strut}%
+   \par}
+\makeatother
+
+\signature{Devavrat V. Dabke \qquad Eva E. Arroyo}
+\address{Duke University \\
+Campus Box 98900 \\
+Durham, NC 27708}
+
+\longindentation=0pt
+
+\begin{document}
+
+\begin{letter}{Professor\ John Carter\\
+Associate Editor\\
+SIAM Undergraduate Research Online\\}
+\opening{To Professor\ Carter:}
+
+Herewith we re-submit our revised paper ``Rumors with Personality: A Differential and Agent-Based Model of Information Spread through Networks'' by Devavrat V. Dabke and Eva E. Arroyo.
+Thank you for your suggestions, we have revised our draft accordingly.
+
+We include the same three models as in the previous draft but with clarifications on their similarities and differences, as well as the parameter choice that we used for each.
+Because of the confusion introduction to our model itself---originally just a set of four equations---we have included a new flow chart, which we feel greatly clarifies the way in which populations move within our model.
+In addition, the conclusion includes more discussion of how individual feature vectors relate to the spread of the rumor throughout the population.
+Several figures have also been changed to increase clarity.
+
+Below, we provide reference to areas we corrected for each comment we received.
+In a few cases where the recommended change was not made exactly as the reviewer suggested,\ we provide reasoning and clarification.
+We appreciate your feedback, which we feel has much improved our manuscript.
+
+
+We greatly appreciate your consideration of our submission
+\vspace{24pt}
+\closing{Sincerely,}
+
+\end{letter}
+\end{document}
