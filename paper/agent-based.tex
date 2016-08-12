@@ -4,12 +4,12 @@
 \subsection{Simple Model Method}
 \label{subsec:abmodelsetup}
 
-\noindent In order to incorporate a network into our model, we constructed an agent-based model (a useful stochastic technique for modeling dyanmics with graphs)~\cite{snijders-2010}.
+\noindent In order to incorporate a network into our model, we constructed an agent-based model (a useful stochastic technique for modeling dynamics with graphs)~\cite{snijders-2010}.
 We discretized the data we used for the differential model, in essence using our parameterized proportions as the probabilities that certain individuals would move between populations.
 Using data from the Facebook network, we allowed individuals to communicate only with those to whom they are connected.
 Since agent-based models are based on probabilities, and are inherently non-deterministic, we essentially have to perform many ``trials'' of the model.
 Each trial consists of initializing a set of ``agents'' into one of the four populations: Ignorant, Spreader, Stifler, or Knowledgeable.
-In each trial, there are several timesteps, at which point each agent has a ``turn.''
+In each trial, there are several time-steps, at which point each agent has a ``turn.''
 At each turn, an agent can interact with other agents, and move from one population to another.
 The rules the define what an agent can or cannot do on a turn are described by the ISTK model.
 For example, in the differential ISTK model, an Ignorant becomes a Spreader by the term $ clSI $.
