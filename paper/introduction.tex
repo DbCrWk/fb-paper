@@ -48,21 +48,9 @@ This effect is also suggested by the theory of confirmation bias, insofar as we 
 \subsection{ISTK Model Equations}
 \label{subsec:istkeqns}
 
-\begin{figure}[H]
-\captionsetup{width=0.6\textwidth}
-\centering
-    \includegraphics[width=0.85\textwidth]{figures/flow-chart}
-  \caption{The ISTK Model, a flowchart}
-\label{fig:flow-chart}
-\end{figure}
+We denote $ I $, $ S $, $ T $, and $ K $ to represent the total Ignorant, Spreader, Stifler, and Knowledgeable populations respectively. The total size of the population is represented as $ N $, in that $ N = I + S + T + K $ (n.b.\ we assume no one dies or is born, so N stays constant).
 
-\noindent Figure~\ref{fig:flow-chart} represents how individuals can move from one population to another.
-The base of each arrow represents the population an individual moves from, while the head represents the population an individual moves to.
-The labels for each arrow express the parameters that control that particular mechanism for moving individuals between the two populations. These labels include two distinct parts. First, some lowercase parameters, like $ c $ or $ l $, which are external factors that influence the rumor spread. Second, uppercase populations, which factor in the size of the corresponding population.
-
-$ I $, $ S $, $ T $, and $ K $, represent the total Ignorant, Spreader, Stifler, and Knowledgeable populations respectively. The total size of the population is represented as $ N $, in that $ N = I + S + T + K $ (n.b.\ we assume no one dies or is born, so N stays constant, i.e. $\frac{dN}{dt} = 0$).
-
-The parameters are as follows:
+We also use several parameters as follows:
 \begin{itemize}
     \item the ``credibility'' of the rumor, $ c $, expressed as a probability that an Ignorant believes the Spreader
     \item $ (1 - c) $\, the complement of $ c $, equivalent to being incredulous of the rumor
@@ -72,9 +60,20 @@ The parameters are as follows:
     \item $ \alpha_2 $, the chance that the Spreader becomes a Stifler upon interacting with a Stifler
 \end{itemize}
 
-In this way, each label represents the ``chance'' per day that an individual can move from one population to another. For example, the arrow that connects the I and T population with the label $ (1-c)SI $ reads: the chance an Ignorant becomes a Stifler is proportionate to their incredulity, the chance per day of interacting with a Spreader, and the size of the Spreader and Ignorant populations.
+\begin{figure}[H]
+\captionsetup{width=0.6\textwidth}
+\centering
+    \includegraphics[width=0.85\textwidth]{figures/flow-chart}
+  \caption{The ISTK Model as a flowchart}
+\label{fig:flow-chart}
+\end{figure}
 
-The model can be surmised by four differential equations, as follows:
+\noindent Figure~\ref{fig:flow-chart} represents how individuals can move from one population to another.
+The base of each arrow represents the population an individual moves from, while the head represents the population an individual moves to.
+The labels for each arrow express how we compute the ``chance'' per day that an individual can move from one population to another.
+For example, the arrow that connects the I and T population with the label $ (1-c)SI $ reads: the chance an Ignorant becomes a Stifler is proportionate to their incredulity, the chance per day of interacting with a Spreader, and the size of the Spreader and Ignorant populations.
+
+The model can be surmised by four differential equations, representing the size of each population over time, as follows:
 
 \begin{equation}
 \label{eqn:istk_exp_i}
@@ -88,8 +87,8 @@ The model can be surmised by four differential equations, as follows:
 \label{eqn:istk_exp_s} \frac{dS}{dt} = clSI - \frac{1}{d} S - 2 \alpha_1l S^2 - \alpha_2 ST \\
 \end{equation}
 
-The first term of Equation~\ref{eqn:istk_exp_s} is the addition of members from the Ignorant class who believed the rumor.
-The second term $ \frac{1}{d} $, the inverse of the number of days it takes to forget the rumor, represents in the chance per day to forget the rumor.
+\noindent The first term of Equation~\ref{eqn:istk_exp_s} is the addition of members from the Ignorant class who believed the rumor.
+The second term $ \frac{1}{d} $, the inverse of the number of days it takes to forget the rumor, represents the chance per day to forget the rumor.
 The third term of Equation~\ref{eqn:istk_exp_s} accounts for two Spreaders who interact with each other and foster disinterest in the rumor (since the rumor has lost its novelty).
 When these two Spreaders interact ($ S^2 $), we account for the chance that \textbf{each} Spreader could become a Stifler by multiplying the term by $ 2 $.
 The final term represents the disillusionment power of a Stifler when interacting with a Spreader.
@@ -98,7 +97,7 @@ The final term represents the disillusionment power of a Stifler when interactin
 \label{eqn:istk_exp_t} \frac{dT}{dt} = 2 \alpha_1l S^2 + \alpha_1l SK + \alpha_2 ST + (1-c)lSI \\
 \end{equation}
 
-In equation~\ref{eqn:istk_exp_t}, the first term describes the transition from Spreader to Stifler.
+\noindent In Equation~\ref{eqn:istk_exp_t}, the first term describes the transition from Spreader to Stifler.
 The second term describes the population of Knowledgeable individuals who become a Stifler, as described in Equation~\ref{eqn:istk_exp_s}.
 The third and fourth terms of Equation~\ref{eqn:istk_exp_t} describe the addition of members to the Stifler population from the Spreader and Ignorant populations, respectively.
 
@@ -106,7 +105,7 @@ The third and fourth terms of Equation~\ref{eqn:istk_exp_t} describe the additio
 \label{eqn:istk_exp_k} \frac{dK}{dt} = \frac{1}{d}S - \alpha_1l SK
 \end{equation}
 
-Finally, Equation~\ref{eqn:istk_exp_k} describes the individuals in the Spreader class who forget the rumor and become Knowledgeable; and the population which loses the novelty of the rumor and become Stiflers.
+\noindent Finally, Equation~\ref{eqn:istk_exp_k} describes the individuals in the Spreader class who forget the rumor and become Knowledgeable; and the population which loses the novelty of the rumor and become Stiflers.
 
 In our model, we do not consider the interaction between a Stifler and an Ignorant because neither one has a reason to broach the subject of a rumor (the Ignorant because they do not know and the Stifler because they no longer care).
 Moreover, by a similar logic, when a Knowledgeable and Stifler interact, there is no change in populations.
