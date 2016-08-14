@@ -20,27 +20,30 @@ Simulations of rumor spread through social media are becoming increasingly reali
 \subsection{The ISTK Model}
 \label{subsec:istk}
 
-In this paper we consider a stochastic rumor spread model with four categories of individuals: the ``ignorant'' individuals, those who have never heard the rumor; the ``spreaders,'' those that have heard the rumor and are actively spreading it; the ``stiflers,'' those who have heard the rumor and actively suppress further transmission (either because they now consider the rumor old news, or they never believed the rumor in the first place); and finally the ``knowledgeable'' population, those who have heard, but have subsequently forgotten the rumor.
+In this paper we consider a rumor spread model with four categories of individuals: the ``ignorant'' individuals, those who have never heard the rumor; the ``spreaders,'' those that have heard the rumor and are actively spreading it; the ``stiflers,'' those who have heard the rumor and actively suppress further transmission (either because they now consider the rumor old news, or they never believed the rumor in the first place); and finally the ``knowledgeable'' population, those who have heard, but have subsequently forgotten the rumor.
 The rumor initializes in only a small fraction of the population, and spreads as the individuals interact.
-The ``ignorant,'' ``spreader,'' and ``stifler'' populations were presented in the Daley-Kendall model~\cite{daley-1965}, but we have added a ``knowledgeable'' population, which has been postulated before as necessarily distinct from the ignorant population~\cite{zhao-2012, zhao-2011}.
+The ignorant, spreader, and stifler populations were presented in the Daley-Kendall (DK) model~\cite{daley-1965}, but it had been postulated that a distinct ``knowledgeable'' population was necessary~\cite{zhao-2012, zhao-2011}.
 Assuming otherwise presumes that the attitude of an individual who has forgotten a rumor is identical to the behavior of an individual who had not yet heard the rumor.
-We account for this distinction with the addition of the knowledgeable population to the Daley-Kendall model.
-This model is henceforth referred to as the Ignorant, Spreader, Stifler, and Knowledgeable (ISTK) model.
+We account for this distinction with the addition of the knowledgeable population to the DK model.
+We dub this updated model the Ignorant, Spreader, Stifler, and Knowledgeable (ISTK) model.
+
 We use three variations of this model: one differential, and two agent-based.
 The differential ISTK model simulates a homogenous group of people, and has no awareness of the concept of individuals; it simply ``moves'' proportions of the group of people from one population to another over time.
-The first agent-based model, the ``Simple model,'' simulates individuals through several iterations (rounds) over time.
+The first agent-based model, the ``simple model,'' simulates individuals through several iterations (rounds) over time.
 The model incorporates a network that represents the connections between individuals, which in this case is based off of Facebook friends.
-The second agent-based model, the ``Feature-vector model,'' incorporates demographic data of these Facebook users.
+The second agent-based model, the ``feature-vector model,'' incorporates demographic data of these Facebook users.
 
-In the ``Feature vector model,'' we further consider 1.\ how a rumor might be targeted towards a certain demographic, and 2.\ how the ``similarity'' between a rumor and an individual affect a user's behavior.
-The original social network dataset included many different types of ``features:'' education level, gender, and language.
-Instead of assuming that every individual is equally likely to spread any rumor, we assumed that the rumor's targeted characteristics and the demographic information of each individual affected the likelihood of the rumor to spread.
-In this way, we equipped the rumor with a \textit{personality}.
-If the individual from whom they heard the rumor was more similar to them, they were more likely to believe the rumor, and if the rumor's characteristics was more similar to theirs they were more likely to spread the rumor.
-There is evidence to suggest that people are more likely to believe information that comes from others with similar values~\cite{gillespie-2004}.
-The similarity of the rumor's personality to that of the individual's influenced the individual's probability to spread the rumor.
-The theory of confirmation bias suggests this behavior, insofar as we are more likely to accept information that confirms our previous beliefs~\cite{wason-1960}.
-The characteristics of the rumor itself contribute to how the rumor is spread between individuals in the Feature vector model, Section~\ref{subsec:fvmodelsetup}.
+In the feature vector model, we further consider how a rumor might be targeted towards certain individuals.
+Instead of assuming that every individual is equally likely to spread a rumor, we assumed that certain characteristics of the rumor and of the individual affect the likelihood of the individual to spread the rumor.
+This idea is supported by evidence that suggests that people are more likely to believe information that comes from others with similar values~\cite{gillespie-2004}.
+Serendipitously, the original social network dataset included demographic data, like education level, gender, and language.
+Therefore, we decided to use demographics of the individuals as their ``features'' and that a rumor could be targeted to appeal to certain demographics.
+While an individual's response to viral information is certainly more complex, our underlying assumption is simply that a rumor \textit{can} be targeted towards an individual.
+Demographic information seemed like a reasonable way to equip individuals and rumors with these features.
+We call this feature vector the ``personality'' of the rumor.
+Moreover, we can compute a notion of ``similarity'' between the feature vector of the rumor and that of an individual.
+In this way, the more similar an individual and rumor were, the more likely an individual would spread the rumor.
+This effect is also suggested by the theory of confirmation bias, insofar as we are more likely to accept information that confirms our previous beliefs~\cite{wason-1960}.
 
 \subsection{ISTK Model Equations}
 \label{subsec:istkeqns}
@@ -49,52 +52,53 @@ The characteristics of the rumor itself contribute to how the rumor is spread be
 \captionsetup{width=0.6\textwidth}
 \centering
     \includegraphics[width=0.85\textwidth]{figures/flow-chart}
-  \caption{ ISTK Model}
+  \caption{The ISTK Model, a flowchart}
 \label{fig:flow-chart}
 \end{figure}
 
-\noindent $ I $, $ S $, $ T $, and $ K $, represent the total Ignorant, Spreader, Stifler, and Knowledgeable populations respectively.
-We also designate $ N $ to represent the total size of the population, in that $ N = I + S + T + K $ (n.b.\ we assume no one dies or is born, so N stays constant, i.e. $\frac{dN}{dt} = 0$).
+\noindent Figure~\ref{fig:flow-chart} represents how individuals can move from one population to another.
+The base of each arrow represents the population an individual moves from, while the head represents the population an individual moves to.
+The labels for each arrow express the parameters that control that particular mechanism for moving individuals between the two populations. These labels include two distinct parts. First, some lowercase parameters, like $ c $ or $ l $, which are external factors that influence the rumor spread. Second, uppercase populations, which factor in the size of the corresponding population.
 
-There are several common parameters to all four differential equations, as follows:
+$ I $, $ S $, $ T $, and $ K $, represent the total Ignorant, Spreader, Stifler, and Knowledgeable populations respectively. The total size of the population is represented as $ N $, in that $ N = I + S + T + K $ (n.b.\ we assume no one dies or is born, so N stays constant, i.e. $\frac{dN}{dt} = 0$).
 
-We represent the ``credibility'' of the rumor, expressed as a probability that the Ignorant believes the Spreader, as $ c $.
-Therefore $ (1 - c) $\, the complement of $ c $ is equivalent to being incredulous of the rumor.
+The parameters are as follows:
+\begin{itemize}
+    \item the ``credibility'' of the rumor, $ c $, expressed as a probability that an Ignorant believes the Spreader
+    \item $ (1 - c) $\, the complement of $ c $, equivalent to being incredulous of the rumor
+    \item $ l $, the chance per day of interaction, which is the complement of the overall probability that an individual does not talk with a single Spreader: it is computed by a set of Bernoulli trials with success probability $ \rho $ where $ \rho = 1 - \frac{S}{N} $ and number of trials to be $ \tau $ (i.e.~$ l = 1 - \rho^\tau $)
+    \item $ d $, the number of days after which an individual forgets a rumor
+    \item $ \alpha_1 $, the loss of novelty of the rumor
+    \item $ \alpha_2 $, the chance that the Spreader becomes a Stifler upon interacting with a Stifler
+\end{itemize}
 
-To represent the chance per day of interaction, $ l $, we take the complement of the overall probability that an individual does not talk with a single Spreader.
-It is computed by a set of Bernoulli trials with success probability $ \rho $ where $ \rho = 1 - \frac{S}{N} $ and number of trials to be $ \tau $ (i.e.~$ l = 1 - \rho^\tau $).
+In this way, each label represents the ``chance'' per day that an individual can move from one population to another. For example, the arrow that connects the I and T population with the label $ (1-c)SI $ reads: the chance an Ignorant becomes a Stifler is proportionate to their incredulity, the chance per day of interacting with a Spreader, and the size of the Spreader and Ignorant populations.
 
-$ d $ represents the number of days after which a population spontaneously forgets a rumor.
-$\alpha_1$ that describes the loss of novelty of the rumor.
-$ \alpha_2 $ describes the chance that the Spreader becomes a Stifler upon interacting with a Stifler.
-
-The equations for each population follow:
+The model can be surmised by four differential equations, as follows:
 
 \begin{equation}
 \label{eqn:istk_exp_i}
 \frac{dI}{dt} = - clSI - (1-c)lSI \\
 \end{equation}
 
-In Equation~\ref{eqn:istk_exp_i}, the first term describes the interaction between an Ignorant and a Spreader.
-It is dependent on both the size of the Ignorant and Spreader classes, and is proportional to parameters $ c $ and $ l $.
- The second term of Equation~\ref{eqn:istk_exp_i} accounts for the complement of ``believing the rumor'' (being ``incredulous'' of the rumor) and is proportionate to $ (1 - c) $.
-Both terms remove some of the population from the Ignorant class and lead to the Spreader class and Stifler class respectively. Although we can simplify this equation to ($-lSI$), we want to distinguish the credulous ($ c $) and incredulous ($ 1 - c $) group of people.
+\noindent In Equation~\ref{eqn:istk_exp_i}, the first term describes the interaction between an Ignorant and a Spreader, which moves individuals to the Spreader population depending on the credibility of the rumor.
+ The second term of Equation~\ref{eqn:istk_exp_i} accounts for being ``incredulous'' of the rumor, which moves Ignorants to Stiflers. (n.b.\ simplifying this equation to ($-lSI$) does not allow us to distinguish the credulous ($ c $) and incredulous ($ 1 - c $) group of people.)
 
 \begin{equation}
 \label{eqn:istk_exp_s} \frac{dS}{dt} = clSI - \frac{1}{d} S - 2 \alpha_1l S^2 - \alpha_2 ST \\
 \end{equation}
 
 The first term of Equation~\ref{eqn:istk_exp_s} is the addition of members from the Ignorant class who believed the rumor.
-The second term characterizes the population which spontaneously forgets the rumor, and hence is inversely proportionate to the Spreader population and $ d $.
+The second term $ \frac{1}{d} $, the inverse of the number of days it takes to forget the rumor, represents in the chance per day to forget the rumor.
 The third term of Equation~\ref{eqn:istk_exp_s} accounts for two Spreaders who interact with each other and foster disinterest in the rumor (since the rumor has lost its novelty).
-When these two Spreaders interact ($S^2$), we account for the chance that \textbf{each} Spreader could become a Stifler by multiplying the term by $ 2 $.
+When these two Spreaders interact ($ S^2 $), we account for the chance that \textbf{each} Spreader could become a Stifler by multiplying the term by $ 2 $.
 The final term represents the disillusionment power of a Stifler when interacting with a Spreader.
 
 \begin{equation}
 \label{eqn:istk_exp_t} \frac{dT}{dt} = 2 \alpha_1l S^2 + \alpha_1l SK + \alpha_2 ST + (1-c)lSI \\
 \end{equation}
 
-In equation~\ref{eqn:istk_exp_t}, the first of which describes the removal of members from the Spreader class into the Stifler as defined above.
+In equation~\ref{eqn:istk_exp_t}, the first term describes the transition from Spreader to Stifler.
 The second term describes the population of Knowledgeable individuals who become a Stifler, as described in Equation~\ref{eqn:istk_exp_s}.
 The third and fourth terms of Equation~\ref{eqn:istk_exp_t} describe the addition of members to the Stifler population from the Spreader and Ignorant populations, respectively.
 
@@ -107,8 +111,6 @@ Finally, Equation~\ref{eqn:istk_exp_k} describes the individuals in the Spreader
 In our model, we do not consider the interaction between a Stifler and an Ignorant because neither one has a reason to broach the subject of a rumor (the Ignorant because they do not know and the Stifler because they no longer care).
 Moreover, by a similar logic, when a Knowledgeable and Stifler interact, there is no change in populations.
 
-
-Our equation differs from the Daley-Kendall model~\cite{daley-1965} primarily through addition of the Knowledgeable class, individuals in this category would have been in the Ignorant of Stifler classes in the original model.
-In addition, the Daley-Kendall model assumes all individuals who hear a rumor will believe it.
-In our case, this is not so, through addition of the parameter $ c $.
-In the Daley-Kendall model it is possible to become ignorant after hearing the rumor, and in this case that is not possible.
+Even more than the addition of the Knowledgeable population, our model differs from the Daley-Kendall (DK) model~\cite{daley-1965} by adding the parameter $ c $.
+This parameter allows us to avoid the assumption that every individual believes the rumor upon hearing it.
+Furthermore, the DK model permits individuals to return to the Ignorant class, which we also cannot happen in our model. Ignorant individuals are individuals who have truly never heard the rumor.
