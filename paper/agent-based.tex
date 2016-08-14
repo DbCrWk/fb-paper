@@ -14,9 +14,10 @@ At each turn, an agent can interact with other agents, and move from one populat
 The rules the define what an agent can or cannot do on a turn are described by the ISTK model.
 For example, in the differential ISTK model, an Ignorant becomes a Spreader by the term $ clSI $.
 Translating this term to the agent-based model: $ lSI $ represents the chance that an Ignorant and Spreader interact (as characterized by the network), and $ c $ represents the credibility of the rumor, as expressed as a probability.
-We performed $ 400 $ distinct trials, where each trial constituted $ 22 $ days.
 
-Each person began as ignorant, except for a randomly selected subset of the population, who became spreaders.
+\subsection{Choosing Parameters}
+We performed $ 400 $ distinct trials, where each trial constituted $ 22 $ days.
+In each trial, each agent began as ignorant, except for a randomly selected subset of the population who started as spreaders.
 The chance of becoming a spreader was set at $ 5\% $ distributed randomly (i.e.\ without considering the network).
 Because it is a large population ($ 4\,039 $ individuals), each trial would have had around $ 202 $ spreaders, but the actual number of spreaders varies from trial to trial.
 Additionally, it was possible for all of the spreaders to be concentrated in a subnetwork or a ``pocket of friends.''
