@@ -5,7 +5,7 @@
 \label{subsec:background}
 
 A rumor is defined as a ``proposition for belief of topical reference disseminated without official verification,''~\cite{knapp-1944} a notion that lends itself quite well to the imagination of applied mathematicians.
-The mathematics of rumor spread is somewhat explored, beginning with the epidemic model applied to information spread in a population by Daley and Kendall in 1965.
+The mathematics of rumor spread is somewhat explored, beginning with a variation of the SIR epidemic model by Daley and Kendall in 1965.
 This model's assumptions of homogeneous interactions and its lack of well-defined parameters likely caused ``the superficial similarity between rumors and epidemics to break down on closer scrutiny''~\cite{daley-1965}.
 Nonetheless, the similarities of knowing and spreading a rumor, and having and spreading a disease, share parallels that only deviate in some of the intricacies of their mechanism.
 In both, an ``infected'' individual in a network desires to (or inadvertently spreads) their ``condition.''
@@ -14,8 +14,8 @@ With disease, one of the mechanisms of suppressing spread is vaccination; with r
 More recent models of rumor spread in a population examined the dynamics through randomized networks~\cite{karp-2000}, examining the rumor transmission in exponentially distributed networks~\cite{moreno-2004}, and the time of rumor spread given contacts of the initial spreader in a regular network~\cite{fount-2010}.
 There is increasing emphasis on the structure of networks themselves and how this affects model dynamics~\cite{zhang-2013, pellis-2015, pellis-2012, ball-2010, zhou-2007}.
 Many of these models derive their structure and dynamics from complex yet internally homogeneous simulations of how individuals interact with rumors.
-However, with the advent social media and their massive networks that allow sharing of information on a large scale, more analyses focus on frequently-found behaviors on these platforms.
-Simulations of rumor spread through social media are becoming increasingly realistic by including ``forgetting'' mechanisms typical of social media~\cite{zhao-2011}, comparing time of rumor spread in random networks as compared to structured networks~\cite{liu-2011}, methods for combatting rumor spread in social networks~\cite{tripathy-2010}, and examining rumor spread on gaming networks~\cite{grab-2008}.
+However, with the advent of social media and their massive networks that allow sharing of information on a large scale, more analyses focus on frequently-found behaviors on these platforms.
+Simulations of rumor spread through social media are becoming increasingly realistic by including ``forgetting'' mechanisms typical of social media~\cite{zhao-2011}, comparing time of rumor spread in random networks as compared to structured networks~\cite{liu-2011}, methods for combating rumor spread in social networks~\cite{tripathy-2010}, and examining rumor spread on gaming networks~\cite{grab-2008}.
 
 \subsection{The ISTK Model}
 \label{subsec:istk}
@@ -30,14 +30,12 @@ We dub this updated model the Ignorant, Spreader, Stifler, and Knowledgeable (IS
 We use three variations of this model: one differential, and two agent-based.
 The differential ISTK model simulates a homogenous group of people, and has no awareness of the concept of individuals; it simply ``moves'' proportions of the group of people from one population to another over time.
 The first agent-based model, the ``simple model,'' simulates individuals through several iterations (rounds) over time.
-The model incorporates a network that represents the connections between individuals, which in this case is based off of Facebook friends.
-The second agent-based model, the ``feature-vector model,'' incorporates demographic data of these Facebook users.
+The model incorporates a network that represents the connections between individuals, which we based off of a dataset of Facebook friends~\cite{mcauley-2014}.
 
 In the feature-vector model, we further consider how a rumor might be targeted towards certain individuals.
 Instead of assuming that every individual is equally likely to spread a rumor, we assumed that certain characteristics of the rumor and of the individual affect the likelihood of the individual to spread the rumor.
 This idea is supported by evidence that suggests that people are more likely to believe information that comes from others with similar values~\cite{gillespie-2004}.
-Serendipitously, the original social network dataset included demographic data, like education level, gender, and language.
-Therefore, we decided to use demographics of the individuals as their ``features'' and that a rumor could be targeted to appeal to certain demographics.
+Therefore, we decided to use demographics (e.g.\ education level, gender, and language) of the individuals, which was included in our dataset, as their ``features.''
 While an individual's response to viral information is certainly more complex, our underlying assumption is simply that a rumor \textit{can} be targeted towards an individual.
 Demographic information seemed like a reasonable way to equip individuals and rumors with these features.
 We call this feature vector the ``personality'' of the rumor.
@@ -48,10 +46,8 @@ This effect is also suggested by the theory of confirmation bias, insofar as we 
 \subsection{ISTK Model Equations}
 \label{subsec:istkeqns}
 
-We denote $ I $, $ S $, $ T $, and $ K $ to represent the total Ignorant, Spreader, Stifler, and Knowledgeable populations respectively. The total size of the population is represented as $ N $, in that $ N = I + S + T + K $ (n.b.\ we assume no one dies or is born, so N stays constant).
-
-We also use several parameters as follows:
-\begin{itemize}
+We denote $ I $, $ S $, $ T $, and $ K $ to represent the total Ignorant, Spreader, Stifler, and Knowledgeable populations respectively. The total size of the population is represented as $ N $, in that $ N = I + S + T + K $ (n.b.\ we assume no one dies or is born, so N stays constant). We also use several parameters as follows:
+\begin{itemize}[nolistsep]
     \item the ``credibility'' of the rumor, $ c $, expressed as a probability that an Ignorant believes the Spreader
     \item $ (1 - c) $\, the complement of $ c $, equivalent to being incredulous of the rumor
     \item $ l $, the chance per day of interaction, which is the complement of the overall probability that an individual does not talk with a single Spreader: it is computed by a set of Bernoulli trials with success probability $ \rho $ where $ \rho = 1 - \frac{S}{N} $ and number of trials to be $ \tau $ (i.e.~$ l = 1 - \rho^\tau $)
@@ -90,7 +86,7 @@ The model can be surmised by four differential equations, representing the size 
 \noindent The first term of Equation~\ref{eqn:istk_exp_s} is the addition of members from the Ignorant class who believed the rumor.
 The second term $ \frac{1}{d} $, the inverse of the number of days it takes to forget the rumor, represents the chance per day to forget the rumor.
 The third term of Equation~\ref{eqn:istk_exp_s} accounts for two Spreaders who interact with each other and foster disinterest in the rumor (since the rumor has lost its novelty).
-When these two Spreaders interact ($ S^2 $), we account for the chance that \textbf{each} Spreader could become a Stifler by multiplying the term by $ 2 $.
+When these two Spreaders interact ($ S^2 $), we account for the chance that each Spreader could become a Stifler by multiplying the term by $ 2 $.
 The final term represents the disillusionment power of a Stifler when interacting with a Spreader.
 
 \begin{equation}
@@ -112,4 +108,5 @@ Moreover, by a similar logic, when a Knowledgeable and Stifler interact, there i
 
 Even more than the addition of the Knowledgeable population, our model differs from the Daley-Kendall (DK) model~\cite{daley-1965} by adding the parameter $ c $.
 This parameter allows us to avoid the assumption that every individual believes the rumor upon hearing it.
-Furthermore, the DK model permits individuals to return to the Ignorant class, which we also cannot happen in our model. Ignorant individuals are individuals who have truly never heard the rumor.
+Furthermore, the DK model permits individuals to return to the Ignorant class, which cannot happen in our model.
+Ignorant individuals are individuals who have truly never heard the rumor.

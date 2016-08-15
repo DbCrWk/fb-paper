@@ -13,7 +13,7 @@ In each trial, there are several time-steps, at which point each agent has a ``t
 At each turn, an agent can interact with other agents, and move from one population to another.
 The rules the define what an agent can or cannot do on a turn are described by the ISTK model.
 For example, in the differential ISTK model, an Ignorant becomes a Spreader by the term $ clSI $.
-Translating this term to the agent-based model: $ lSI $ represents the chance that an Ignorant and Spreader interact (as characterized by the network), and $ c $ represents the credibility of the rumor, as expressed as a probability.
+Translating this term to the agent-based model: $ lSI $ represents the chance that an Ignorant and Spreader interact (as characterized by the network), and $ c $ represents the credibility of the rumor expressed as a probability.
 
 \subsection{Choosing Parameters}
 We performed $ 400 $ distinct trials, where each trial constituted $ 22 $ days.
@@ -25,7 +25,7 @@ Additionally, it was possible for all of the spreaders to be concentrated in a s
 To begin each day, every user was assigned an amount of time logged in by picking randomly from a normal distribution with a mean of $ 23 $ minutes and a standard deviation of $ 4 $ minutes, bounded above $ 0 $.
 We made the assumption that the majority of people will probably be logged on during an $8$ hour period of the day; therefore, we only modeled $480$ minutes per day, within which the users select their logon time (n.b.\ users also could not log on in the last $ 23 $ minutes of the day, as $ 23 $ minutes a day was set as the mean browsing time).
 Each user had a probability of $14/365$ to ``post'' in a given day.
-Then, based on the time that they are ``logged on,'' users were assigned a ``time'' which they made their post form a uniform random distribution.
+Then, users were assigned a ``time'' (from a uniform random distribution) at which they made their post.
 This occurred on each of the $ 22 $ days that constituted a trial.
 
 \begin{table}[ht]
@@ -53,7 +53,7 @@ $\mathbb{P}(X)$ denotes probability that reader changes to class $X$}
 
 
 Each ``day,'' after determining the logon time, posting order, and post time, the simulation of rumor spread began.
-Every minute, each user could ``view'' posts written at that minute from people to whom they were \textbf{directly} connected.
+Every minute, each user could ``view'' posts written at that minute from people to whom they were directly connected.
 Users were also capped at reading $ 10 $ posts a minute.
 If a poster was a spreader, they had chance $ \delta = \frac{1}{d} = \frac{1}{22*480} $ of forgetting the rumor.
 Then, based off of the probabilities in Table~\ref{table:absimpleparams}, the state of each person was immediately recalculated.
@@ -70,8 +70,8 @@ Each feature corresponds to some data from the original Facebook profiles, like 
 Although we use demographic data, we only assume that it is possible to target rumors towards certain individuals based on features; this could be easily extended to other types of data, e.g.\ interests, favorite music, personality traits etc.
 Each of our features is boolean, although our original dataset included ``N/A'' if the value is unknown.
 To move around this problem, any ``N/As'' for a given feature were filled in randomly with some probability $ p $, where $ p = \frac{x_{t}}{x_{f} + x_{t}} $, $ x_{t} $ is the number of \textit{true} values there were for a particular feature across the population, and $ x_{f} $ is the corresponding number of \textit{false} values.
-The rumor itself was also initialized with a particular feature vector, each term generated randomly.
-With these feature vectors, we can study how feature similarity influences credibility of rumors impacts rumor spread in a population.
+The rumor itself was also initialized with a randomly-generated feature vector.
+Feature vectors permit us to investigate how a targeted rumor affects its spread in a network.
 We constructed several rumors with different feature vectors, and also included a ``most similar'' rumor feature vector (created by rounding every $ p $ to 0 or 1 for each feature) and a ``most dissimilar'' rumor feature vector (the logical complement of the ``most similar'' rumor vector).
 
 Next, pairwise angular similarity $ S_{p,r} $ was taken between the two interacting agents, poster and reader. This is incidentally equivalent to the cosine value of the angle between the vectors, which is nicely contained between $ 0 $ and $ 1 $, where $ 1 $ is the most similar. This is given by
