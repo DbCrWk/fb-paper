@@ -82,7 +82,7 @@ Angular similarity between the feature and the reader was also determined, where
 
 We also determined a ``baseline'' $ b = 0.5 $, which is the ``influence'' of an original parameter, and where $ 1 - b = 0.5 $ represents the influence of the interaction of feature vectors.
 This baseline determined how much each parameter was affected by the similarity scores of feature vectors, and guaranteed the values would be at least half of the original model values.
-The simple agent-based model was run again, with $ b*c + (1-(b*c))*F_k $ substituted for $ c $ and $ b*\alpha + (1-(b*\alpha))*S_{p,r} $ substituted for the respective $ \alpha $ values and agents $ i $ and $ j $.
+The simple agent-based model was run again, with $ bc + (1-(bc))F_k $ substituted for $ c $ and $ b\alpha + (1-(b\alpha))S_{p,r} $ substituted for the respective $ \alpha $ values and agents $ i $ and $ j $.
 
 We tested $ 86 $ different feature vectors, with $ 100 $ trials each.
 In addition for our simulated ``most similar'' rumor and the ``most dissimilar'' rumor, we ran $ 300 $ repetitions with each rumor, of the stochastic agent based model, with the same population.
